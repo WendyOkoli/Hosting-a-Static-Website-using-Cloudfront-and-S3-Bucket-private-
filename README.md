@@ -41,7 +41,7 @@ If the name is not unique, you won't be able to create a bucket.
 
 ![Uncheck Public Access](/Images/Image3.png)
 
-- Leave all that settings on default. Scroll down and click on the create bucket.
+- Leave all every other settings on default. Scroll down and click on create bucket.
 
 ![Create Bucket](/Images/Image4.png)
 
@@ -93,7 +93,7 @@ If the name is not unique, you won't be able to create a bucket.
 
 ![Edit Bucket Policy](/Images/Image15.png)
 
-- Edit the bucket policy using the codes below and replace _mybucket_name_ to your bucket name
+- Edit the bucket policy using the codes below and replace _mybucket_name_ with your bucket name
 
 ```
 {
@@ -141,7 +141,7 @@ See the image below:
 - To complete the distribution configuration, copy policy and click on __Go to S3 permissions to update policy__
 ![Complete Distribution Config](/Images/Image22.png)
 
-- On the permissionstab under your bucket, scroll to bucket policy and click edit. Delete the policy you pasted before which you used to see if your bucket was publicy accessible before we used cloudfront to make it private. Then paste the policy. Here is what it should look like
+- On the permissions tab under your bucket, scroll to bucket policy and click edit. Delete the policy you pasted before which you used to see if your bucket was publicy accessible before we used cloudfront to make it private. Then paste the policy. Here is what it should look like
 ```
 {
         "Version": "2008-10-17",
