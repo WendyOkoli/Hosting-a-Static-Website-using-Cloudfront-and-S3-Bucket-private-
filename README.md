@@ -28,118 +28,66 @@ Amazon CloudFront is a content delivery network (CDN) service provided by Amazon
 
 1. Create an Amazon S3 bucket
 
-- Log in on your AWS management console and search for the S3 service. Proceed to create a bucket as seen below:
+* Log in on your AWS management console and search for the S3 service. Proceed to create a bucket as seen below:
 
 ![Create S3 Bucket](/Images/Image1.png)
 
-- Select the general purpose type for your bucket and a unique name for your bucket. 
+* Select the general purpose type for your bucket and a unique name for your bucket. 
 If the name is not unique, you won't be able to create a bucket.
 
 ![Bucket type and name](/Images/Image2.png)
 
-- Uncheck the block public access and also acknowledge the warning
+* Leave every other settings on default. Scroll down and click on create bucket
+![Setting on default and create bucket](/Images/Image3.png)
 
-![Uncheck Public Access](/Images/Image3.png)
 
-- Leave all every other settings on default. Scroll down and click on create bucket.
+* Once the bucket has been successfully created, click on _view details_ or your bucket name to view the details of the bucket created.
 
 ![Create Bucket](/Images/Image4.png)
 
-- Once the bucket has been successfully created, click on _view details_ or your bucket name to view the details of the bucket created.
 
-![View details of bucket](/Images/Image5.png)
 
 2. Upload files into the S3 bucket
 
-- In the bucket overview page, under the objects tab, click on upload to upload the file/folders of your website.
+* In the bucket overview page, under the objects tab, click on upload to upload the file/folders of your website.
 
-![Upload objects](/Images/Image6.png)
+![View details of bucket](/Images/Image5.png)
 
-- Drag and drop your files or add them as files/folders.
+* Drag and drop your files or add them as files/folders.
+ ![Upload objects](/Images/Image6.png)
 
-![Add files and folder](/Images/Image7.png)
+* Scroll to the end of the page and click on upload.
 
-- Scroll to the end of the page and click on upload.
+ ![Add files and folder](/Images/Image7.png)
+
+
+* Once the upload has been succesful as seen in the image below, close the page.
 
 ![Upload files](/Images/Image8.png)
 
-- Once the upload has been succesful as seen in the image below, close the page.
+
+3. Create a CloudFront Distribution to make your AWS S3 bucket private
+
+* On the AWS management console, search for Cloudfront and click on it. Then proceed to create a CloudFront distribution.
 
 ![Successful Upload](Images/Image9.png)
 
-3. Enable Static Website Hosting
-
-- Navigate to bucket overview page, under properties tab, 
-
-![Properties tab](/Images/Image10.png) 
-
-- Enable static website hosting
-
-![Static Website Enabled](/Images/Image11.png)
-
-- On the index document, enter _index.html_ so as to specify the default page of the static website.
-
-![Index Document](/Images/Image12.png)
-
-- Leave every other settings on default and scroll down to the end of the page to save changes
-
-![Save Properties Changes](/Images/Image13.png)
-
-4. Add Bucket Policy
-
-- Under the permission tab of your bucket overview page, scroll down to edit your bucket policy
-
-![Permission Tab](/Images/Image14.png)
-
-![Edit Bucket Policy](/Images/Image15.png)
-
-- Edit the bucket policy using the codes below and replace _mybucket_name_ with your bucket name
-
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "PublicReadGetObject",
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": [ 
-                "s3:GetObject"
-            ],
-            "Resource": [
-                "arn:aws:s3:::<mybucket_name>/*"
-            ]   
-            
-        }
-    ]
-}
-```
-
-![Bucket Policy](/Images/Image16.png)
-
-- Scroll down and save changes.
-
-5. Create a CloudFront Distribution to make your AWS S3 bucket private
-
-- On the AWS management console, search for Cloudfront and click on it. Then proceed to create a CloudFront distribution
-
-![CloudFront](/Images/Image17.png)
 
 - Next, enter an origin name. It should be the same with the name you have as your bucket.
 Proceed to create a new Origin Access Control.
 See the image below:
-![Origin Name](/Images/Image18.png)
+![Origin Name](/Images/Image10.png)
 
-![Origin Access Control](/Images/Image19.png)
+![Origin Access Control](/Images/Image11.png)
 
 - Set your WAF to **Do not enable security protection** since this is for practice. 
-![WAF](/Images/Image20.png)
+![WAF](/Images/Image12.png)
 
 - Leave every other settings on default and proceed to create your distribution
-![Create Distribution](/Images/Image21.png)
+![Create Distribution](/Images/Image13.png)
 
 - To complete the distribution configuration, copy policy and click on __Go to S3 permissions to update policy__
-![Complete Distribution Config](/Images/Image22.png)
+![Complete Distribution Config](/Images/Image14.png)
 
 - On the permissions tab under your bucket, scroll to bucket policy and click edit. Delete the policy you pasted before which you used to see if your bucket was publicy accessible before we used cloudfront to make it private. Then paste the policy. Here is what it should look like
 ```
@@ -164,15 +112,15 @@ See the image below:
         ]
       }
 ```
-![New Bucket Policy](/Images/Image23.png)
+![New Bucket Policy](/Images/Image15.png)
 
 - Save changes and proceed to  to your CloudFront page and copy your Distribution domain name. Paste it on your browser and add /index.html to it. Make sure to use your own Distribution domain name.
 
-![Distribution Domain Name](/Images/Image24.png)
+![Distribution Domain Name](/Images/Image16.png)
 
 - Finally, the outcome of your page should look like this
 
-![Outcome of web page](/Images/Image25.png)
+![Outcome of web page](/Images/Image17.png)
 
 ## Conclusion
 
